@@ -35,9 +35,9 @@ def plotdf(df, show=True, save=True, title='test.png',
     dateto = str(df.T.columns[-1])[:10]
     fig, ax = plt.subplots(2, 1, figsize=(10, 10))
     ax[0].set_title(f'{title}')
-    df[plotfrom:].plot(lw=3, ax=ax[0], color='green')
+    df[plotfrom:].plot(lw=3, ax=ax[0])
     ax[1].set_title(f'New {title}')
-    df.diff(1)[plotfrom:].plot(lw=3, ax=ax[1], legend=False, color='green')
+    df.diff(1)[plotfrom:].plot(lw=3, ax=ax[1], legend=False)
     if show: plt.show()
     if save: plt.savefig(f'{title}_{plotfrom}_to_{dateto}_top_{topn}.png')
 
