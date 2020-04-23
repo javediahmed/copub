@@ -28,7 +28,8 @@ for datafile in datafiles:
     print('Reading', datafile)
     dfs.append(readdf(datafile))
     
-titles = ['Cases', 'Deaths', 'Recovered']
+#titles = ['Cases', 'Deaths', 'Recovered']
+titles = [i.split('_')[-2].capitalize() for i in datafiles]
 
 def plotdf(df, show=True, save=True, title='test.png',
            plotfrom=plotfrom, topn=topn):
@@ -41,9 +42,10 @@ def plotdf(df, show=True, save=True, title='test.png',
     if show: plt.show()
     if save: plt.savefig(f'{title}_{plotfrom}_to_{dateto}_top_{topn}.png')
 
-print(f'Writing charts for top {topn} countries')
-for i, title in enumerate(titles):
-    plotdf(dfs[i], show=False, title=title)
+if __name__=='__main__':
+    print(f'Writing charts for top {topn} countries')
+    for i, title in enumerate(titles):
+        plotdf(dfs[i], show=False, title=title)
     
 
 
